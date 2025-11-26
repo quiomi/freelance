@@ -1,0 +1,75 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*Lib
+*Scripts
+*.cfg
+
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+*.sqlite3
+
+# Env
+.env
+*.env
+
+# venv
+venv/
+env/
+.venv/
+.env/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Cache
+*.cache
+*.DS_Store
+
+# PyCharm / JetBrains
+*.iml
+*.ipr
+*.iws
+
+# Local settings
+local_settings.py
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# MyPy, Pyright, etc
+.mypy_cache/
+.pytype/
+
+# pytest
+.cache/
+.pytest_cache/
+
+# Pip
+pip-log.txt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Celery
+celerybeat.pid
+
+# Docker
+*.pid
+
+# Dist
+dist/
+build/

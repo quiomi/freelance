@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile • Freelance Space</title>
+  <link rel="stylesheet" href="{% static 'profiles/style.css' %}">
+</head>
+<body>
+  <div class="bg-blob a"></div>
+  <div class="bg-blob b"></div>
+
+  <div class="container">
+    <div class="profile-card" role="region" aria-label="User profile">
+      <aside class="left">
+        <div class="avatar" id="avatar">👩‍💻</div>
+        <div class="name" id="display-name">{{ object.first_name }} {{object.last_name}}</div>
+        <div class="role" id="display-role">{{ object.role }}</div>
+
+        <div class="meta" aria-hidden="true">
+          <div class="pill">🌍 San Francisco</div>
+          <div class="pill">💼 5 years</div>
+        </div>
+
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><div class="num" id="stat-jobs">124</div><div class="label">Jobs</div></div>
+          <div class="stat"><div class="num" id="stat-rating">4.9</div><div class="label">Rating</div></div>
+          <div class="stat"><div class="num" id="stat-earn">$24k</div><div class="label">Earnings</div></div>
+        </div>
+
+        <div class="section" style="margin-top:18px">
+          <div class="section-title">Contact</div>
+          <div style="display:flex;gap:8px;flex-direction:column">
+            <div style="font-size:14px">✉️ <a id="contact-email" href="mailto:jane@example.com">jane@example.com</a></div>
+            <div style="font-size:14px">📱 <span id="contact-phone">+1 555 1234</span></div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="hireBtn">Hire</button>
+            <button class="btn ghost" id="messageBtn">Message</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="right">
+        <section class="section">
+          <div class="section-title">About</div>
+          <div class="bio" id="bio">Warm, approachable product designer focused on clean interfaces and calm user experiences. I help startups ship delightful products that feel personal.</div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Skills</div>
+          <div class="skills" id="skills">
+            <div class="skill">Product Design</div>
+            <div class="skill">UI/UX</div>
+            <div class="skill">Figma</div>
+            <div class="skill">Prototyping</div>
+            <div class="skill">Branding</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Portfolio</div>
+          <div class="portfolio-grid" id="portfolio">
+            <article class="project">
+              <img src="https://images.unsplash.com/photo-1531498860504-56f8ab5d2d9f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 1">
+              <div class="meta"><div class="title">Calm Travel App</div><div class="desc">Concept app for peaceful travel planning.</div></div>
+            </article>
+            <article class="project">
+              <img src="https://images.unsplash.com/photo-1508385082359-f8fd74997c87?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 2">
+              <div class="meta"><div class="title">Wellness Dashboard</div><div class="desc">Dashboard UX for health tracking.</div></div>
+            </article>
+            <article class="project">
+              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 3">
+              <div class="meta"><div class="title">Brand Refresh</div><div class="desc">Visual identity for boutique studio.</div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Reviews</div>
+          <div class="reviews" id="reviews">
+            <div class="review"><div class="who">Alex • Founder</div><div class="text">Great work — calm and reliable. The productship was smooth and thoughtful.</div></div>
+            <div class="review"><div class="who">Sam • PM</div><div class="text">Delivered ahead of schedule, communication was excellent.</div></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="{% static 'profiles/script.js' %}"></script>
+</body>
+</html>
