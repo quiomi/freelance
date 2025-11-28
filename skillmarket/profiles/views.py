@@ -13,4 +13,7 @@ class UserView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user: FreelanceUser = self.object
+        if user.role == 'seller' and hasattr(user, 'seller_profile'):
+            context['seller_profile'] = user.seller_profile
         return context

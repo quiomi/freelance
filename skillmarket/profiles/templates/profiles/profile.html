@@ -15,7 +15,13 @@
   <div class="container">
     <div class="profile-card" role="region" aria-label="User profile">
       <aside class="left">
-        <div class="avatar" id="avatar">👩‍💻</div>
+        {% if object.seller_profile.avatar %}
+          <div class="avatar" id="avatar">
+            <img src="{{ object.seller_profile.avatar.url }}" alt="Avatar of {{ object.first_name }} {{ object.last_name }}" height="120px" width="120px", id="avatar" class="avatar">
+          </div>
+        {% else %}
+          <div class="avatar" id="avatar">👩‍💻</div>
+        {% endif %}
         <div class="name" id="display-name">{{ object.first_name }} {{object.last_name}}</div>
         <div class="role" id="display-role">{{ object.role }}</div>
 
@@ -24,6 +30,11 @@
           <div class="pill">💼 5 years</div>
         </div>
 
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><div class="num" id="stat-jobs">124</div><div class="label">Jobs</div></div>
+          <div class="stat"><div class="num" id="stat-rating">4.9</div><div class="label">Rating</div></div>
+          <div class="stat"><div class="num" id="stat-earn">$24k</div><div class="label">Earnings</div></div>
+        </div>
         <div class="stats" aria-hidden="true">
           <div class="stat"><div class="num" id="stat-jobs">124</div><div class="label">Jobs</div></div>
           <div class="stat"><div class="num" id="stat-rating">4.9</div><div class="label">Rating</div></div>
@@ -47,17 +58,17 @@
       <main class="right">
         <section class="section">
           <div class="section-title">About</div>
-          <div class="bio" id="bio">Warm, approachable product designer focused on clean interfaces and calm user experiences. I help startups ship delightful products that feel personal.</div>
-        </section>
+          {% if object.seller_profile.description %}
+            <div class="bio" id="bio">{{ object.seller_profile.description }}</div>
+          {% endif %}
+          </section>
 
         <section class="section">
           <div class="section-title">Skills</div>
           <div class="skills" id="skills">
-            <div class="skill">Product Design</div>
-            <div class="skill">UI/UX</div>
-            <div class="skill">Figma</div>
-            <div class="skill">Prototyping</div>
-            <div class="skill">Branding</div>
+            {% for skill in object.seller_profile.skills.all %}
+              <div class="skill">{{ skill.name }}</div>
+            {% endfor %}
           </div>
         </section>
 
