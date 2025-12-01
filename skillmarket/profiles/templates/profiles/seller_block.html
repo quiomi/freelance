@@ -1,0 +1,92 @@
+{% extends 'profiles/profile_base.html' %}
+{% load static %}
+
+{% block avatar %}
+  {% if seller_profile.avatar %}
+    <div class="avatar" id="avatar">
+      <img src="{{ seller_profile.avatar.url }}" alt="Avatar of {{ object.first_name }} {{ object.last_name }}" height="120px" width="120px", id="avatar" class="avatar">
+    </div>
+  {% else %}
+   <div class="avatar" id="avatar">👩‍💻</div>
+  {% endif %}
+{% endblock %}
+
+
+{% block stats %}
+  <div class="stats" aria-hidden="true">
+    <div class="stat"><div class="num" id="stat-orders">{{ seller_profile.orders }}</div><div class="label">Orders</div></div>
+    <div class="stat"><div class="num" id="stat-orders-completed">{{ seller_profile.orders_completed }}</div><div class="label">Orders completed</div></div>
+    <div class="stat"><div class="num" id="stat-rating">{{ scope }}</div><div class="label">Rating</div></div>
+  </div>
+    <div class="stats" aria-hidden="true">
+    <div class="stat"><div class="num" id="stat-reviews_all">{{ seller_profile.reviews_all }}</div><div class="label">Reviews</div></div>
+    <div class="stat"><div class="num" id="stat-negative_reviews">{{ seller_profile.negative_reviews }}</div><div class="label">Negative reviews</div></div>
+    <div class="stat"><div class="num" id="stat-positive_reviews">{{ seller_profile.positive_reviews }}</div><div class="label">Positive reviews</div></div>
+  </div>
+{% endblock %}
+
+{% block description %}
+  <section class="section">
+              <div class="section-title">About</div>
+              {% if object.seller_profile.description %}
+                <div class="bio" id="bio">{{ object.seller_profile.description }}</div>
+              {% endif %}
+            </section>
+{% endblock %}
+
+{% block skills %}
+  <section class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills" id="skills">
+          {% for skill in object.seller_profile.skills.all %}
+        <div class="skill">{{ skill.name }}</div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block portfolio %}
+          <section class="section">
+            <div class="section-title">Portfolio</div>
+            <div class="portfolio-grid" id="portfolio">
+              <article class="project">
+                <img src="https://images.unsplash.com/photo-1531498860504-56f8ab5d2d9f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 1">
+                <div class="meta"><div class="title">Calm Travel App</div><div class="desc">Concept app for peaceful travel planning.</div></div>
+              </article>
+              <article class="project">
+                <img src="https://images.unsplash.com/photo-1508385082359-f8fd74997c87?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 2">
+                <div class="meta"><div class="title">Wellness Dashboard</div><div class="desc">Dashboard UX for health tracking.</div></div>
+              </article>
+              <article class="project">
+                <a href="google.com">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 3">
+                <div class="meta"><div class="title">Brand Refresh</div><div class="desc">Visual identity for boutique studio.</div></div></a>
+              </article>
+            </div>
+          </section>
+{% endblock %}
+
+
+{% block reviews %}
+          <section class="section">
+            <div class="section-title">Reviews</div>
+            <div class="reviews" id="reviews">
+              {% for review in seller_profile.reviews.all %}
+                {% if review.is_positive %}
+                <div class="review positive">
+                  <div class="who">{{ review.reviewer.username }}</div>
+                  
+                  <div class="text">{{ review.comment }}</div>
+                </div>
+                {% else %}
+                <div class="review negative">
+                  <div class="who">{{ review.reviewer.username }}</div>
+                  <div class="text">{{ review.comment }}</div>
+                </div>
+                {% endif %}
+              {% empty %}
+                <div>No reviews yet.</div>
+              {% endfor %}
+            </div>
+          </section>
+{% endblock %}

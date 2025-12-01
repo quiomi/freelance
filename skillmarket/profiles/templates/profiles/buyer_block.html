@@ -1,0 +1,27 @@
+{% extends 'profiles/profile_base.html' %}
+{% load static %}
+
+{% block avatar %}
+    {% if buyer_profile.avatar %}
+        <div class="avatar" id="avatar">
+            <img src="{{ buyer_profile.avatar.url }}" alt="Avatar of {{ object.first_name }} {{ object.last_name }}" height="120px" width="120px", id="avatar" class="avatar">
+        </div>
+    {% else %}
+        <div class="avatar" id="avatar">👩‍💻</div>
+    {% endif %}
+{% endblock %}
+
+{% block stats %}
+  <div class="stats" aria-hidden="true">
+    <div class="stat"><div class="num" id="stat-orders">{{ buyer_profile.orders }}</div><div class="label">Orders</div></div>
+  </div>
+{% endblock %}
+
+{% block description %}
+  <section class="section">
+              <div class="section-title">{{ buyer_profile.title }}</div>
+              {% if buyer_profile.description %}
+                <div class="bio" id="bio">{{ buyer_profile.description }}</div>
+              {% endif %}
+            </section>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="{% static 'home_page/style.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">Logo</div>
+
+    <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">Browse</a>
+        <a href="#">Messages</a>
+        <a href="#">Account</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Find the perfect freelance<br>services for your business</h1>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search for services...">
+        <button>Search</button>
+    </div>
+
+    <div class="tags">
+        <span>Web Development</span>
+        <span>Mobile Development</span>
+        <span>UI/UX Design</span>
+        <span>Writing</span>
+    </div>
+</section>
+
+<section class="sections">
+    <div class="section-item">Popular Services</div>
+    <div class="section-item">How it Works</div>
+    <div class="section-item">Get Started</div>
+</section>
+
+</body>
+</html>

@@ -15,9 +15,9 @@ class UserView(DetailView):
     def get_template_names(self):
         user: FreelanceUser = self.object
         if user.role == 'Seller':
-            return ['profiles/seller_profile.html']
+            return ['profiles/seller_block.html']
         else:
-            return ['profiles/buyer_profile.html']
+            return ['profiles/buyer_block.html']
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -29,4 +29,6 @@ class UserView(DetailView):
                 scope = round((user.seller_profile.orders_completed / user.seller_profile.orders) * 5, 1)
                 
             context["scope"] = scope
+        elif user.role == 'Buyer':
+            context['buyer_profile'] = user.buyer_profile
         return context
