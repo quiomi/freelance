@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ object.username }}</title>
+  <link rel="stylesheet" href="{% static 'profiles/style.css' %}">
+</head>
+<body>
+    <div class="buyer-profile-card">
+        <div class="buyer-header">
+            <img src="/static/img/default-avatar.png" class="buyer-avatar" alt="">
+            <div class="buyer-info">
+                <h2 class="buyer-username">Имя покупателя</h2>
+                <p class="buyer-role">Покупатель</p>
+            </div>
+
+            <a class="edit-btn" href="#">Редактировать</a>
+        </div>
+
+        <div class="buyer-section">
+            <h3>О себе</h3>
+            <p class="buyer-bio">
+                Короткое описание покупателя. Интересы, предпочтения, формат работы.
+            </p>
+        </div>
+
+        <div class="buyer-section">
+            <h3>Активность</h3>
+            <ul class="buyer-stats">
+                <li><span>Совершено покупок:</span> 12</li>
+                <li><span>Оставлено отзывов:</span> 5</li>
+                <li><span>Дата регистрации:</span> 24.01.2024</li>
+            </ul>
+        </div>
+
+        <div class="buyer-section">
+            <h3>Отзывы о покупателе</h3>
+
+            <div class="review review-positive">
+                <p class="review-text">Отличный покупатель, быстро отвечает и чётко формулирует задачу.</p>
+                <span class="review-author">— Продавец #1</span>
+            </div>
+
+            <div class="review review-negative">
+                <p class="review-text">Долго не подтверждал заказ, пришлось ждать.</p>
+                <span class="review-author">— Продавец #2</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -29,6 +29,34 @@
     /* container */
     .container{max-width:1100px;margin:42px auto;padding:28px}
 
+    .owner-edit-panel {
+    margin-top: 14px;
+}
+
+    .owner-edit-btn.new {
+        padding: 12px 20px;
+        background: #3c322d;
+        color: #ffffff;
+        border-radius: 50px;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .owner-edit-btn.new:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .owner-edit-btn.new:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+
+
     /* profile card */
     .profile-card{display:grid;grid-template-columns:300px 1fr;gap:28px;background:var(--card);padding:28px;border-radius:22px;box-shadow:0 18px 40px rgba(85,65,48,0.06);border:1px solid var(--glass-border);backdrop-filter:blur(8px);}
 
@@ -66,15 +94,24 @@
 
     /* reviews */
     .reviews{display:flex;flex-direction:column;gap:10px}
-    .review{background:linear-gradient(180deg,#fff,#fbf8f6);padding:12px;border-radius:12px;border:1px solid #efe6dd}
+    .review{padding:12px;border-radius:12px;border:1px solid #efe6dd}
     .review .who{font-weight:600;font-size:13px}
-    .review .text{font-size:13px;opacity:.85;margin-top:6px}
+    .review .text{font-size:13px;opacity:.85;margin-top:6px;}
 
     /* contact actions */
     .actions{display:flex;gap:12px;margin-top:10px}
     .btn{padding:10px 14px;border-radius:14px;border:none;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
     .btn.ghost{background:transparent;border:1px solid #e7dace;color:var(--muted)}
 
+    .positive {
+      background: rgb(142, 184, 129);
+      color: rgb(60, 50, 45);
+    }
+
+    .negative {
+      background: rgb(184, 101, 89);
+      color: rgb(35, 28, 26);
+    }
     /* responsive */
     @media (max-width:900px){.profile-card{grid-template-columns:1fr;}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.avatar{width:120px;height:120px}}
     @media (max-width:520px){.portfolio-grid{grid-template-columns:1fr}.container{padding:18px}}

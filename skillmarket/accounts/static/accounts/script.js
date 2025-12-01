@@ -257,12 +257,16 @@ class SoftMinimalismLoginForm {
             headers: {
                 "X-CSRFToken": csrftoken
             },
-            body: formdata
+            body: formdata,
+            credentials: "same-origin"
         });
 
         const data = await response.json();
-        console.log(data)
+    
         if (data['status']) {
+            console.log("Login successful"); 
+            console.log(data['redirect_url']);   
+
             this.showGentleSuccess(data['redirect_url']);
         } else {
             throw new Error("email/password not correct");

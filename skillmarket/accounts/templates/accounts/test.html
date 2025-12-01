@@ -1,0 +1,9 @@
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input type="email" id="email" name="username" required autocomplete="email">
+    <input type="password" id="password" name="password" required autocomplete="current-password">
+    <input type="submit" value="">
+
+
+
+</form>

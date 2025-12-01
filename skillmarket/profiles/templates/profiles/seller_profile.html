@@ -5,19 +5,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Profile • Freelance Space</title>
+  <title>{{ object.username }}</title>
   <link rel="stylesheet" href="{% static 'profiles/style.css' %}">
 </head>
 <body>
   <div class="bg-blob a"></div>
   <div class="bg-blob b"></div>
+  
 
   <div class="container">
     <div class="profile-card" role="region" aria-label="User profile">
       <aside class="left">
-        {% if object.seller_profile.avatar %}
+        {% if seller_profile.avatar %}
           <div class="avatar" id="avatar">
-            <img src="{{ object.seller_profile.avatar.url }}" alt="Avatar of {{ object.first_name }} {{ object.last_name }}" height="120px" width="120px", id="avatar" class="avatar">
+            <img src="{{ seller_profile.avatar.url }}" alt="Avatar of {{ object.first_name }} {{ object.last_name }}" height="120px" width="120px", id="avatar" class="avatar">
           </div>
         {% else %}
           <div class="avatar" id="avatar">👩‍💻</div>
@@ -25,21 +26,32 @@
         <div class="name" id="display-name">{{ object.first_name }} {{object.last_name}}</div>
         <div class="role" id="display-role">{{ object.role }}</div>
 
+        {{ object.username }}
+        {% if request.user == object %}
+          <div class="owner-edit-panel">
+            <button class="owner-edit-btn new">Редактировать профиль</button>
+          </div>
+        {% endif %}
         <div class="meta" aria-hidden="true">
           <div class="pill">🌍 San Francisco</div>
           <div class="pill">💼 5 years</div>
         </div>
 
+        
+
         <div class="stats" aria-hidden="true">
-          <div class="stat"><div class="num" id="stat-jobs">124</div><div class="label">Jobs</div></div>
-          <div class="stat"><div class="num" id="stat-rating">4.9</div><div class="label">Rating</div></div>
-          <div class="stat"><div class="num" id="stat-earn">$24k</div><div class="label">Earnings</div></div>
+          <div class="stat"><div class="num" id="stat-orders">{{ object.seller_profile.orders }}</div><div class="label">Orders</div></div>
+          <div class="stat"><div class="num" id="stat-orders-completed">{{ object.seller_profile.orders_completed }}</div><div class="label">Orders completed</div></div>
+          <div class="stat"><div class="num" id="stat-rating">{{ scope }}</div><div class="label">Rating</div></div>
         </div>
         <div class="stats" aria-hidden="true">
-          <div class="stat"><div class="num" id="stat-jobs">124</div><div class="label">Jobs</div></div>
-          <div class="stat"><div class="num" id="stat-rating">4.9</div><div class="label">Rating</div></div>
-          <div class="stat"><div class="num" id="stat-earn">$24k</div><div class="label">Earnings</div></div>
+          <div class="stat"><div class="num" id="stat-reviews_all">{{ object.seller_profile.reviews_all }}</div><div class="label">Reviews</div></div>
+          <div class="stat"><div class="num" id="stat-negative_reviews">{{ seller_profile.negative_reviews }}</div><div class="label">Negative reviews</div></div>
+          <div class="stat"><div class="num" id="stat-positive_reviews">{{ seller_profile.positive_reviews }}</div><div class="label">Positive reviews</div></div>
         </div>
+
+        
+        
 
         <div class="section" style="margin-top:18px">
           <div class="section-title">Contact</div>
@@ -84,8 +96,9 @@
               <div class="meta"><div class="title">Wellness Dashboard</div><div class="desc">Dashboard UX for health tracking.</div></div>
             </article>
             <article class="project">
+              <a href="google.com">
               <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Project 3">
-              <div class="meta"><div class="title">Brand Refresh</div><div class="desc">Visual identity for boutique studio.</div></div>
+              <div class="meta"><div class="title">Brand Refresh</div><div class="desc">Visual identity for boutique studio.</div></div></a>
             </article>
           </div>
         </section>
@@ -93,8 +106,22 @@
         <section class="section">
           <div class="section-title">Reviews</div>
           <div class="reviews" id="reviews">
-            <div class="review"><div class="who">Alex • Founder</div><div class="text">Great work — calm and reliable. The productship was smooth and thoughtful.</div></div>
-            <div class="review"><div class="who">Sam • PM</div><div class="text">Delivered ahead of schedule, communication was excellent.</div></div>
+            {% for review in seller_profile.reviews.all %}
+              {% if review.is_positive %}
+              <div class="review positive">
+                <div class="who">{{ review.reviewer.username }}</div>
+                
+                <div class="text">{{ review.comment }}</div>
+              </div>
+              {% else %}
+              <div class="review negative">
+                <div class="who">{{ review.reviewer.username }}</div>
+                <div class="text">{{ review.comment }}</div>
+              </div>
+              {% endif %}
+            {% empty %}
+              <div>No reviews yet.</div>
+            {% endfor %}
           </div>
         </section>
 
