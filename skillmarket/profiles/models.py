@@ -9,13 +9,8 @@ def user_directory_path(instance, filename):
 class BuyerUser(models.Model):
     user = models.OneToOneField(FreelanceUser, on_delete=models.CASCADE, related_name='buyer_profile')
     
-    def clean(self):
-        if self.user.role and self.user.role != 'Buyer':
-            raise ValidationError("Пользователь уже имеет другую роль.")
-        return super().clean()
     
     def save(self, *argv, **kwargv):
-        self.full_clean()
         if self.user.role != "Buyer":
             raise ValidationError("User role must be 'Buyer' to create a BuyerUser profile.")
         return super().save(*argv, **kwargv)
@@ -32,15 +27,10 @@ class BuyerUser(models.Model):
 class SellerUser(models.Model):
     user = models.OneToOneField(FreelanceUser, on_delete=models.CASCADE, related_name='seller_profile')
     
-    def clean(self):
-        if self.user.role and self.user.role != 'seller':
-            raise ValidationError("Пользователь уже имеет другую роль.")
-        return super().clean()
-    
-    def save(self, force_insert = ..., force_update = ..., using = ..., update_fields = ...):
+    def save(self, *argv, **kwargv):
         if self.user.role != "Seller":
             raise ValueError("User role must be 'Seller' to create a SellerUser profile.")
-        return super().save(force_insert, force_update, using, update_fields)
+        return super().save(*argv, **kwargv)
     
     avatar = models.ImageField(upload_to=user_directory_path, null=True, blank=True, verbose_name="Avatar user image")
     description = models.TextField(null=True, blank=True, verbose_name="Description about seller", max_length=1500)

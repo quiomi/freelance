@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="{% static 'accounts/registration.css' %}">
+    <link rel="shortcut icon" href="{% static 'home_page/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+
+            <div class="icon-circle">
+                😊
+            </div>
+
+            <h1 class="title">Create account</h1>
+            <p class="subtitle">Join our peaceful space</p>
+
+            <form method="post" class="auth-form" action="{% url 'signup' %}">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+
+                <div class="field">
+                    <label>Email address</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password1" required>
+                </div>
+
+                <div class="field">
+                    <label>Repeat password</label>
+                    <input type="password" name="password2" required>
+                </div>
+
+                <div class="role-box">
+                    <label class="role-label">Select your role</label>
+
+                    <div class="roles">
+                        <label class="role-item">
+                            <input type="radio" name="role" value="Seller" required>
+                            <span>Seller</span>
+                        </label>
+
+                        <label class="role-item">
+                            <input type="radio" name="role" value="Buyer" required>
+                            <span>Buyer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Sign up</button>
+
+                <p class="bottom-text">
+                    Already have an account?
+                    <a href="{% url 'login' %}">Sign in</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

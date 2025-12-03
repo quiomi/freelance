@@ -8,8 +8,10 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 40px 60px;
+    padding: 20px 30px;
     font-size: 18px;
+    background-color: #5b3e32;
+
 }
 
 .logo {
@@ -18,14 +20,18 @@ body {
 }
 
 .nav a {
-    margin-left: 35px;
+    margin-left: 15px;
+    color: #fff;
     text-decoration: none;
-    color: #5b3e32;
+    background-color: #d4a47a;
+    padding: 10px;
+    border-radius: 10px;
     transition: 0.2s ease;
 }
 
 .nav a:hover {
     opacity: 0.7;
+    background-color: #d4a47a;
 }
 
 .hero {

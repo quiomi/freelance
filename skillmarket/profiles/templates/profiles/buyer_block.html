@@ -19,9 +19,15 @@
 
 {% block description %}
   <section class="section">
+              {% if buyer_profile.title %}
               <div class="section-title">{{ buyer_profile.title }}</div>
+              {% else %}
+              <div class="section-title">About</div>
+              {% endif %}
               {% if buyer_profile.description %}
                 <div class="bio" id="bio">{{ buyer_profile.description }}</div>
+              {% else  %}
+                <div class="bio" id="bio"></div>
               {% endif %}
             </section>
 {% endblock %}

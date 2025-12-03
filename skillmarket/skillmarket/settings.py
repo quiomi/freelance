@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-n#2ekin5tihi&fxo1)$z^74o3oy$8_w)7d5ed%vy1v!!s!5!g5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.104', '127.0.0.1']
 
 
 # Application definition
@@ -47,6 +47,8 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+LOGIN_REDIRECT_URL = '/login/'
 
 INSTALLED_APPS = [
     'home_page',
