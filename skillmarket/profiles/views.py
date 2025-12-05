@@ -7,7 +7,7 @@ from django.http import HttpRequest
 
 class UserView(DetailView):
     model = FreelanceUser
-    slug_url_kwarg = 'username'
+    slug_url_kwarg = 'user'
     slug_field = 'username'
     
     

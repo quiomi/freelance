@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import path, register_converter
 from . import views
 
 urlpatterns = [
-    path("<slug:username>/", views.UserView.as_view(), name = "profile")
+    path("<username:user>/", views.UserView.as_view(), name = "profile")
 ]

@@ -11,3 +11,4 @@ class FreelanceUser(AbstractUser):
         BUYER = 'Buyer'
     
     role = models.CharField(max_length=6, choices=UserRole.choices)
+    country = models.CharField(verbose_name="Country")

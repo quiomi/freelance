@@ -5,7 +5,6 @@ from django import forms
 
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(label = "Email пользователя")
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     
     
 class RegistrationForm(UserCreationForm):
@@ -14,4 +13,4 @@ class RegistrationForm(UserCreationForm):
     
     class Meta:
         model = FreelanceUser
-        fields = ('username', 'email', 'password1', 'password2', "role")
+        fields = ('username', 'email', 'password1', 'password2', "role", "country")

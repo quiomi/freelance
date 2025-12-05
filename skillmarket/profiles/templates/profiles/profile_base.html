@@ -29,8 +29,10 @@
             </div>
           {% endif %}
           <div class="meta" aria-hidden="true">
-            <div class="pill">🌍 San Francisco</div>
-            <div class="pill">💼 5 years</div>
+            <div class="pill">🌍 {{ object.country }}</div>
+          </div>
+          <div class="meta" aria-hidden="true">
+            <div class="pill">💼 {{ object.date_joined }}</div>
           </div>
           
           {% block stats %}
